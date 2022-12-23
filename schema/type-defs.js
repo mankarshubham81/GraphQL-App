@@ -27,8 +27,16 @@ const typeDefs = gql`
         movie(name: String!): Movie!
     }
 
+    input createUserInput {
+        name: String!
+        userName: String!
+        #in input type we can define default value like below
+        age: Int
+        nationality: Nationality = Indian
+    }
+
     type Mutation {
-        createUser: User!
+        createUser(input: createUserInput!): User!
     }
 
     enum Nationality{

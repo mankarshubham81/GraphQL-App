@@ -21,13 +21,24 @@ const resolvers = {
             const MovieName = _.find(MovieList, {name: requestName} );
             return MovieName;
         },
-        // User: {
-        //     favouriteMovies: () =>{
-        //         return _.filter(MovieList, (movie) =>
-        //             movie.yearOfPublication >= 2001 && movie.yearOfPublication <= 2022
-        //         );
-        //     },
-        // },
+    },
+    User: {
+        favouriteMovies: () =>{
+            return _.filter(MovieList, (movie) =>
+                movie.yearOfPublication >= 2010 && movie.yearOfPublication <= 2017
+            );
+        },
+    },
+    Mutation: {
+        createUser: (parent, args) =>{
+            const user = args.input;
+            let LastId = UserList[UserList.length -1].id;
+            user.id = LastId + 1;
+            UserList.push(user);
+            return user;
+            // console.log(user)
+            
+        },
     },
 };
 
