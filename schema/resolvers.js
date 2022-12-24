@@ -39,6 +39,29 @@ const resolvers = {
             // console.log(user)
             
         },
+        updateUserName: (parent, args) =>{
+            // const id = args.input.id;
+            // const newUserName = args.input.newUserName;
+            const { id, newUserName } = args.input;
+            let userUpdated;
+            UserList.forEach((user) => {
+                if(user.id === parseInt(id)){
+                    user.name = newUserName;
+                    userUpdated = user;
+                }
+            });
+            return userUpdated;
+            
+        },
+        deleteUser: (parent, args) =>{
+            const id  = args.id;
+            console.log("fgg",id)
+            // let userDeleted;
+            _.remove(UserList, (user) => ( user.id === Number(id)));
+            // console.log(userDeleted)
+            return null;
+          
+        },
     },
 };
 
