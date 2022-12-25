@@ -58,7 +58,7 @@ const UserList = [
 const MovieList = [
     {
         id: 1,
-        name: "Beautiful People",
+        name: "A Beautiful Mind",
         yearOfPublication: 2002,
         isInTheater: true,
     },
