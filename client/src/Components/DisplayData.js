@@ -1,5 +1,6 @@
 import React from 'react'
 import {useQuery, gql} from '@apollo/client';
+import CreateNewUser from './CreateNewUser';
 
 const QUERY_ALL_USERS = gql`
     query getAllUsers{
@@ -15,7 +16,7 @@ const QUERY_ALL_USERS = gql`
 
 
 function DisplayData() {
-    const {data, loading, error} = useQuery(QUERY_ALL_USERS);
+    const {data, loading, error, refetch} = useQuery(QUERY_ALL_USERS);
 
     if(loading){
         return <h1>MovieList is loading</h1>;
@@ -30,6 +31,9 @@ function DisplayData() {
     }
   return (
     <div>
+        <CreateNewUser
+            refetch={refetch}
+        />
         { data && data.users.map((user) => {
             return <div key={user.id}>
                 <h2>Name    : {user.name}</h2>
